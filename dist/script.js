@@ -5,8 +5,21 @@ function isStrongPassword(password) {
   if (password.toLowerCase().includes("password")) {
     return false;
   }
-  if (!/[A-Z]/.test(password)) {
+
+  // Iterator to go through the password and search for a caputal
+  let hasUpper = false;
+  for (let i = 0; i < password.length; i++) {
+    const char = password[i];
+    // using ASCII values since any capital should have a value between A and Z
+    if (char >= "A" && char <= "Z") {
+      hasUpper = true;
+      break; 
+    }
+// checking hasUpper
+  if (!hasUpper)  {
     return false;
+  }
+    
   }
   return true;
 }
